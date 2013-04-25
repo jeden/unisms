@@ -1,0 +1,1 @@
+﻿<%@ WebHandler Language="C#" Class="Elapsus.Usms.Gateway.Notification.Clickatell.ClickatellNotifierHandler" CodeBehind="ClickatellNotifierHandler.ashx.cs" %>

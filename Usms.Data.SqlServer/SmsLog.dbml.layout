@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SmsLog">
+  <DataContextMoniker Name="/SmsLogDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9a4fcbf5-7f89-4495-9460-e0b4302a41aa" absoluteBounds="0.75, 1, 2, 2.9247054036458326">
+      <DataClassMoniker Name="/SmsLogDataContext/SmsLog" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4a119f0-358e-4605-a94e-16501c85cec5" absoluteBounds="0.765, 1.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec0a1474-08a1-457f-a248-bdcb7335a4e6" absoluteBounds="4.875, 1.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SmsLogDataContext/SmsLogRecipient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0a9e5b19-56c0-48fc-88f5-9f994024929d" absoluteBounds="4.89, 2.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.89985270182292); (4.875 : 2.89985270182292)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SmsLogDataContext/SmsLog/SmsLog_SmsLogRecipient" />
+      <nodes>
+        <classShapeMoniker Id="9a4fcbf5-7f89-4495-9460-e0b4302a41aa" />
+        <classShapeMoniker Id="ec0a1474-08a1-457f-a248-bdcb7335a4e6" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

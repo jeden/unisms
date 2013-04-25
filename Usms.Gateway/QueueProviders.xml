@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<usmsgw>
+  <queueProviders>
+    <queueProvider enabled="true" default="true">
+      <name>SqlServerQueue</name>
+      <assembly>Elapsus.Usms.Queuing.SqlServer</assembly>
+      <class>Elapsus.Usms.Queuing.SqlServer.Queue</class>
+    </queueProvider>
+    <queueProvider enabled="false" default="false">
+      <name>SqlServerQueue2</name>
+      <assembly>Elapsus.Usms.Queuing.SqlServer</assembly>
+      <class>Elapsus.Usms.Queuing.SqlServer.Queue</class>
+    </queueProvider>
+  </queueProviders>
+</usmsgw>

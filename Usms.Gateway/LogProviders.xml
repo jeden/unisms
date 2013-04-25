@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<usmsgw>
+  <logProviders>
+    <logProvider enabled="true">
+      <name>TextLogger</name>
+      <assembly>Elapsus.Usms.Logging.Text</assembly>
+      <class>Elapsus.Usms.Logging.Text.TextLogger</class>
+      <configuration>
+        <set key="fileName" value="C:\temp\sms.log" />
+      </configuration>
+    </logProvider>
+    <logProvider enabled="true">
+      <name>SqlServerLogger</name>
+      <assembly>Elapsus.Usms.Logging.SqlServer</assembly>
+      <class>Elapsus.Usms.Logging.SqlServer.SqlServerLogProvider</class>
+      <configuration />
+    </logProvider>
+  </logProviders>
+</usmsgw>

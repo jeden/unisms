@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<usmsgw>
+  <smsProviders>
+
+    <!-- Fake Sms Provider -->
+    <smsProvider default="true">
+      <name>Fake</name>
+      <assembly>Elapsus.Usms.Gateway.Providers.Fake</assembly>
+      <class>Elapsus.Usms.Gateway.Providers.Fake.FakeProvider</class>
+      <features>
+        <feature name="simpleSms" value="yes" />
+        <feature name="testMode" value="yes" />
+      </features>
+      <configuration>
+        <set key="testMode" value="yes" />
+      </configuration>
+    </smsProvider>
+
+    <!-- Clickatell SOAP Provider -->
+    <smsProvider>
+      <name>Clickatell</name>
+      <assembly>Elapsus.Usms.Gateway.Providers.Clickatell.Soap</assembly>
+      <class>Elapsus.Usms.Gateway.Providers.Clickatell.Soap.ClickatellProvider</class>
+      <features>
+        <feature name="simpleSms" value="yes" />
+        <feature name="testMode" value="yes" />
+      </features>
+      <configuration>
+        <set key="testMode" value="yes" />
+        <set key="api_id" value="3125788" />
+        <set key="user" value="jeden" />
+        <set key="password" value="kracos4" />
+      </configuration>
+    </smsProvider>
+
+    <!-- Aspsms SOAP Provider -->
+    <smsProvider>
+      <name>Aspsms</name>
+      <assembly>Elapsus.Usms.Gateway.Providers.Aspsms</assembly>
+      <class>Elapsus.Usms.Gateway.Providers.Aspsms.AspsmsProvider</class>
+      <features>
+        <feature name="simpleSms" value="yes" />
+        <feature name="testMode" value="yes" />
+      </features>
+      <configuration>
+        <set key="testMode" value="yes" />
+        <set key="userKey" value="test" />
+        <set key="password" value="pwdtest" />
+      </configuration>
+    </smsProvider>
+  </smsProviders>
+</usmsgw>

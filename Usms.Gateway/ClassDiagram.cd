@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="Elapsus.Usms.Gateway.Engine.Smsc">
+    <Position X="6.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAACABAAAAAAAAAAAAAEEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Smsc.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Elapsus.Usms.Gateway.Envelope.Sms">
+    <Position X="0.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAQAQAAAAAAAAAAAAAAAEAAACABMAAAIAAIAAQ=</HashCode>
+      <FileName>Envelope\Sms.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Elapsus.Usms.Gateway.Factory.SmsFactory">
+    <Position X="10" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\SmsFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Elapsus.Usms.Gateway.Envelope.SmsStatus">
+    <Position X="0.75" Y="5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Envelope\SmsStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Elapsus.Usms.Gateway.Envelope.SmsStatusCollection">
+    <Position X="6.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Envelope\SmsStatus.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

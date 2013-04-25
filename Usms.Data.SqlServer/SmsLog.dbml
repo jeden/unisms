@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="usms" Class="SmsLogDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=usms;Integrated Security=True" SettingsObjectName="Elapsus.Usms.Data.SqlServer.Properties.Settings" SettingsPropertyName="usmsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SmsLog" Member="SmsLogs">
+    <Type Name="SmsLog" Id="ID1">
+      <Column Name="SmsLogId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sender" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalRecipients" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AcceptedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ForwardedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Failures" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Successes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="SmsLog_SmsLogRecipient" Member="SmsLogRecipients" ThisKey="SmsLogId" OtherKey="SmsLogId" Type="SmsLogRecipient" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SmsLogRecipient" Member="SmsLogRecipients">
+    <Type Name="SmsLogRecipient">
+      <Column Name="SmsLogId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Recipient" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderReference" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="NotifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NotificationCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NotificationMessage" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="SmsLog_SmsLogRecipient" Member="SmsLog" ThisKey="SmsLogId" OtherKey="SmsLogId" Type="SmsLog" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.SmsLog_Forwarded" Method="SmsLog_Forwarded">
+    <Parameter Name="SmsLogId" Parameter="smsLogId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="ProviderReference" Parameter="providerReference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ForwardedOn" Parameter="forwardedOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Recipient" Parameter="recipient" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Failed" Parameter="failed" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ErrorCode" Parameter="errorCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ErrorMessage" Parameter="errorMessage" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SmsQueue_Enqueue" Method="SmsQueue_Enqueue">
+    <Parameter Name="SmsLogId" Parameter="smsLogId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="ApplicationId" Parameter="applicationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Sender" Parameter="sender" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalRecipients" Parameter="totalRecipients" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NText" />
+    <Parameter Name="AcceptedOn" Parameter="acceptedOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Recipients" Parameter="recipients" Type="System.String" DbType="Text" />
+    <ElementType Name="SmsQueue_EnqueueResult">
+      <Column Name="SmsLogId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sender" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalRecipients" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AcceptedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ForwardedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Failures" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Successes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SmsLog_Insert" Method="SmsLog_Insert">
+    <Parameter Name="SmsLogId" Parameter="smsLogId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="ApplicationId" Parameter="applicationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="Sender" Parameter="sender" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="TotalRecipients" Parameter="totalRecipients" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Message" Parameter="message" Type="System.String" DbType="NText" />
+    <Parameter Name="AcceptedOn" Parameter="acceptedOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Recipients" Parameter="recipients" Type="System.String" DbType="Text" />
+    <Parameter Name="Enqueued" Parameter="enqueued" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="SmsLog_InsertResult">
+      <Column Name="SmsLogId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sender" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalRecipients" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="AcceptedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ForwardedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Failures" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Successes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SmsQueue_Dequeue" Method="SmsQueue_Dequeue">
+    <Parameter Name="ConversationHandle" Parameter="conversationHandle" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.SmsQueue_Dequeue_Commit" Method="SmsQueue_Dequeue_Commit">
+    <Parameter Name="ConversationHandle" Parameter="conversationHandle" Type="System.Guid" DbType="UniqueIdentifier" Direction="InOut" />
+    <Parameter Name="Commit" Parameter="commit" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SmsQueue_GetQueueSize" Method="SmsQueue_GetQueueSize" IsComposable="true">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SmsLog_DeliveryStatusUpdate" Method="SmsLog_DeliveryStatusUpdate">
+    <Parameter Name="ProviderReference" Parameter="providerReference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Recipient" Parameter="recipient" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="NotifiedOn" Parameter="notifiedOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="NotificationCode" Parameter="notificationCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NotificationMessage" Parameter="notificationMessage" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SmsLog_DeliveryFailureNotification" Method="SmsLog_DeliveryFailureNotification">
+    <Parameter Name="ProviderReference" Parameter="providerReference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Recipient" Parameter="recipient" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="FailedOn" Parameter="failedOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ErrorCode" Parameter="errorCode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ErrorMessage" Parameter="errorMessage" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SmsLog_DeliveryConfirmation" Method="SmsLog_DeliveryConfirmation">
+    <Parameter Name="ProviderReference" Parameter="providerReference" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Recipient" Parameter="recipient" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="DeliveredOn" Parameter="deliveredOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="NotificationCode" Parameter="notificationCode" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
